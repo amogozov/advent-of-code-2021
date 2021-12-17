@@ -39,7 +39,7 @@ fun calc10_2(input: List<String>): Long {
     }
     println(costs)
     val n = costs.size
-    return costs.sorted()[n/2]
+    return costs.sorted()[n / 2]
 }
 
 fun calc10_1(input: List<String>): Int {

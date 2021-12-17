@@ -137,7 +137,6 @@ fun calc11_02(input: List<String>): Int {
     return step
 }
 
-
 fun printBoard(b: ArrayList<IntArray>) {
     for (row in b) {
         for (c in row) {

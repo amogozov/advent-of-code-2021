@@ -1,5 +1,3 @@
-
-
 fun main(args: Array<String>) {
     val input = readStringList("day02.txt")
     println(calc02_02(input))
@@ -16,11 +14,13 @@ fun calc02_02(input: List<String>): Int {
             when (split[0]) {
                 "up" -> aim -= value
                 "down" -> aim += value
-                "forward" -> { x += value; y += value * aim }
+                "forward" -> {
+                    x += value; y += value * aim
+                }
             }
         }
     }
-    return x*y
+    return x * y
 }
 
 
@@ -38,5 +38,5 @@ fun calc02_01(input: List<String>): Int {
             }
         }
     }
-    return x*y
+    return x * y
 }

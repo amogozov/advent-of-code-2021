@@ -9,19 +9,21 @@ fun calc04_1(input: List<String>): Int {
     val boardList = input.drop(1)
     val n = boardList.size / 6
     val (boards, boardsState) = parseBoards(boardList)
-    bingos.forEach { bingo -> run {
-        for (b in 0 until n) {
-            val cb = boards[b]
-            for (i in 0 until 5)
-                for (j in 0 until 5)
-                    if (cb[i][j] == bingo) {
-                        boardsState[b][i][j] = true
-                    }
-            if (bingoed(boardsState[b])) {
-                return score(cb, boardsState[b]) * bingo
+    bingos.forEach { bingo ->
+        run {
+            for (b in 0 until n) {
+                val cb = boards[b]
+                for (i in 0 until 5)
+                    for (j in 0 until 5)
+                        if (cb[i][j] == bingo) {
+                            boardsState[b][i][j] = true
+                        }
+                if (bingoed(boardsState[b])) {
+                    return score(cb, boardsState[b]) * bingo
+                }
             }
         }
-    }}
+    }
     return 0
 }
 
@@ -32,25 +34,27 @@ fun calc04_2(input: List<String>): Int {
     val (boards, boardsState) = parseBoards(boardList)
     val won = BooleanArray(n)
     var wc = 0
-    bingos.forEach {bingo -> run {
-        for (b in 0 until n) {
-            if (won[b])
-                continue
-            val cb = boards[b]
-            for (i in 0 until 5)
-                for (j in 0 until 5)
-                    if (cb[i][j] == bingo) {
-                        boardsState[b][i][j] = true
+    bingos.forEach { bingo ->
+        run {
+            for (b in 0 until n) {
+                if (won[b])
+                    continue
+                val cb = boards[b]
+                for (i in 0 until 5)
+                    for (j in 0 until 5)
+                        if (cb[i][j] == bingo) {
+                            boardsState[b][i][j] = true
+                        }
+                if (bingoed(boardsState[b])) {
+                    won[b] = true
+                    wc++
+                    if (wc == n) {
+                        return score(cb, boardsState[b]) * bingo
                     }
-            if (bingoed(boardsState[b])) {
-                won[b] = true
-                wc++
-                if (wc == n) {
-                    return score(cb, boardsState[b]) * bingo
                 }
             }
         }
-    }}
+    }
     return 0
 }
 

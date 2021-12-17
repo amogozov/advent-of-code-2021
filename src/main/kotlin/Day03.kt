@@ -1,10 +1,7 @@
-
-
 fun main(args: Array<String>) {
     val input = readStringList("day03.txt")
     println(calc03_2(input))
 }
-
 
 
 fun calc03_1(input: List<String>): Int {
@@ -12,7 +9,7 @@ fun calc03_1(input: List<String>): Int {
     val zeroes = IntArray(n)
     val ones = IntArray(n)
     input.forEach {
-        it.forEachIndexed { index, c -> if (c == '0') zeroes[index]++ else ones[index]++  }
+        it.forEachIndexed { index, c -> if (c == '0') zeroes[index]++ else ones[index]++ }
     }
     var gamma = ""
     var epsilon = ""

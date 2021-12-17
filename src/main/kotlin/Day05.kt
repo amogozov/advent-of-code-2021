@@ -13,18 +13,20 @@ fun calc05_1(input: List<String>): Int {
     for (i in 0 until n) {
         board.add(IntArray(n))
     }
-    input.forEach { line -> run {
-        val points = line.split(" -> ")
-        val p1 = points[0].trim().split(",")
-        val p2 = points[1].trim().split(",")
-        val x1 = p1[0].toInt()
-        val y1 = p1[1].toInt()
-        val x2 = p2[0].toInt()
-        val y2 = p2[1].toInt()
-        if ((x1 == x2 || y1 == y2)) {
-            mark(board, x1, y1, x2, y2)
+    input.forEach { line ->
+        run {
+            val points = line.split(" -> ")
+            val p1 = points[0].trim().split(",")
+            val p2 = points[1].trim().split(",")
+            val x1 = p1[0].toInt()
+            val y1 = p1[1].toInt()
+            val x2 = p2[0].toInt()
+            val y2 = p2[1].toInt()
+            if ((x1 == x2 || y1 == y2)) {
+                mark(board, x1, y1, x2, y2)
+            }
         }
-    }}
+    }
     return score05(board)
 }
 
@@ -34,18 +36,20 @@ fun calc05_2(input: List<String>): Int {
     for (i in 0 until n) {
         board.add(IntArray(n))
     }
-    input.forEach { line -> run {
-        val points = line.split(" -> ")
-        val p1 = points[0].trim().split(",")
-        val p2 = points[1].trim().split(",")
-        val x1 = p1[0].toInt()
-        val y1 = p1[1].toInt()
-        val x2 = p2[0].toInt()
-        val y2 = p2[1].toInt()
-        if (x1 == x2 || y1 == y2 || abs(x1 - x2) == abs(y1 - y2)) {
-            mark(board, x1, y1, x2, y2)
+    input.forEach { line ->
+        run {
+            val points = line.split(" -> ")
+            val p1 = points[0].trim().split(",")
+            val p2 = points[1].trim().split(",")
+            val x1 = p1[0].toInt()
+            val y1 = p1[1].toInt()
+            val x2 = p2[0].toInt()
+            val y2 = p2[1].toInt()
+            if (x1 == x2 || y1 == y2 || abs(x1 - x2) == abs(y1 - y2)) {
+                mark(board, x1, y1, x2, y2)
+            }
         }
-    }}
+    }
     return score05(board)
 }
 
@@ -58,6 +62,6 @@ fun mark(board: ArrayList<IntArray>, sx: Int, sy: Int, ex: Int, ey: Int) {
     val dy = (ey - sy).sign
     val steps = max(abs(sx - ex), abs(sy - ey))
     for (s in 0..steps) {
-        board[sy + dy*s][sx + dx*s]++
+        board[sy + dy * s][sx + dx * s]++
     }
 }
